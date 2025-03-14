@@ -1,5 +1,6 @@
 # MeetFresh_KOC
-clean.py: Merge multiple JSON files and only keep unique elements.
+## clean.py: 
+Merge multiple JSON files and only keep unique elements.
 - How to use:
     ```shell
     python clean.py -i [input_folder] -o [output_folder] -e [is_extention]
