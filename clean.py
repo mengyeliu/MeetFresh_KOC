@@ -50,8 +50,20 @@ def merge_json_files(input_folder, output_folder, is_ex):
                     data = json.load(f)
                     for i in data:
                         count_note += 1
-                        note_id = i["note_id"]
+                        note_id = i.get("note_id", "")
                         if note_id not in note_id_collection:
+                            liked_count = i.get("liked_count", "")
+                            collected_count = i.get("collected_count", "")
+                            comment_count = i.get("comment_count", "")
+                            share_count = i.get("share_count", "")
+                            if liked_count == "10+" or liked_count == "1千+" or liked_count == "1万+":
+                                print(i.get("nickname", "")+" of "+note_id+" :"+liked_count)
+                            if collected_count == "10+" or collected_count == "1千+" or collected_count == "1万+":
+                                print(i.get("nickname", "")+" of "+note_id+" :"+collected_count)
+                            if comment_count == "10+" or comment_count == "1千+" or comment_count == "1万+":
+                                print(i.get("nickname", "")+" of "+note_id+" :"+comment_count)
+                            if share_count == "10+" or share_count == "1千+" or share_count == "1万+":
+                                print(i.get("nickname", "")+" of "+note_id+" :"+share_count)
                             combined_data.append(i)
                             note_id_collection.append(note_id)
                 print(f"Successfully processed: {json_file}")
