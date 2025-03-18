@@ -56,16 +56,16 @@ def merge_json_files(input_folder, output_folder, is_ex):
                             collected_count = i.get("collected_count", "")
                             comment_count = i.get("comment_count", "")
                             share_count = i.get("share_count", "")
-                            if liked_count == "10+" or liked_count == "1千+" or liked_count == "1万+":
-                                print(i.get("nickname", "")+" of "+note_id+" :"+liked_count)
-                            if collected_count == "10+" or collected_count == "1千+" or collected_count == "1万+":
-                                print(i.get("nickname", "")+" of "+note_id+" :"+collected_count)
-                            if comment_count == "10+" or comment_count == "1千+" or comment_count == "1万+":
-                                print(i.get("nickname", "")+" of "+note_id+" :"+comment_count)
-                            if share_count == "10+" or share_count == "1千+" or share_count == "1万+":
-                                print(i.get("nickname", "")+" of "+note_id+" :"+share_count)
-                            combined_data.append(i)
-                            note_id_collection.append(note_id)
+                            try:
+                                int(liked_count)
+                                int(collected_count)
+                                int(comment_count)
+                                int(share_count)
+                                combined_data.append(i)
+                                note_id_collection.append(note_id)
+                            except:
+                                print(os.path.basename(json_file),i.get("nickname", "")+" of "+note_id+" :"+liked_count,collected_count,comment_count,share_count)
+                                
                 print(f"Successfully processed: {json_file}")
             except Exception as e:
                 print(f"Error loading {json_file}: {e}")
