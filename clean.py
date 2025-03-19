@@ -31,7 +31,7 @@ def merge_json_files(input_folder, output_folder, is_ex):
                 print(f"Successfully processed: {json_file}")
             except Exception as e:
                 print(f"Error loading {json_file}: {e}")
-        file_name = "creator.json"
+        file_name = "creator_creator_total.json"
         output_file = os.path.join(output_folder, file_name)
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(combined_data, f, indent=4,ensure_ascii=False)
@@ -69,7 +69,7 @@ def merge_json_files(input_folder, output_folder, is_ex):
                 print(f"Successfully processed: {json_file}")
             except Exception as e:
                 print(f"Error loading {json_file}: {e}")
-        file_name = "content.json"
+        file_name = "creator_contents_total.json"
         output_file = os.path.join(output_folder, file_name)
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(combined_data, f, indent=4,ensure_ascii=False)
